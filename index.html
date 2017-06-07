@@ -20,12 +20,254 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<style>
+			.deemphasize {
+				opacity: 0.6;
+			}
+
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Hiding In Plain Sight</h2>
+					<h6>Fun With Steganography</h6>
+				</section>
+
+				<section>
+					<h2>Who Am I?</h2>
+					<p class="fragment">Chris Karper</p>
+					<p class="fragment"><small>Platform Architect @ Under Armour</small></p>
+					<p class="fragment"><small>
+						Github: <a href="https://github.com/ckarper">@ckarper</a><br />
+						Twitter: <a href="http://twitter.com/wickity">@wickity</a>
+					</small></p>
+				</section>
+
+				<section>
+					<h2>What Is This Talk</h2>
+					<p>A mostly silly guide to hiding information</p>
+					<aside class="notes">
+						This is a talk about secret codes, and recapturing the fun we had as
+						kids passing notes, writing coded messages, or using invisible ink.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Steganography</h2>
+					<p class="fragment">
+						Steganos (στεγανός) <span class="deemphasize">- Concealed, Protected<span>
+					</p>
+					<p class="fragment">
+						Graphein (γράφειν)<span class="deemphasize">- Writing<span>
+					</p>
+					<img class="fragment" src="imgs/stegosaurus-pen.jpg" />
+					<aside class="notes">
+						Greek Roots:
+						<ul>
+							<li>Steganos   (Steh-Gah-Nose)</li>
+							<li>Graphein   (Grap-Hayn)</li>
+						</ul>
+						gives you concealed writing...
+					</aside>
+				</section>
+
+				<section>
+					<img src="imgs/what-it-means.gif" />
+				</section>
+
+				<section>
+					<h6>Steganography !== Cryptography</h6>
+					<aside class="notes">
+						These are not the same things...
+					</aside>
+				</section>
+
+				<section data-transition="fade-in none-out">
+					<h2>Cryptography</h2>
+					<p>Encoding information, requiring a key to recover</p>
+					<div style="position:relative; width:640px; height:480px; margin: 0 auto;">
+						<div class="fragment current-visible" style="position: absolute; top: 0; left: 0" >
+							<img src="imgs/640px-skytale.png" />
+							<small style="float: right">
+							Credit:
+							<a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>,
+							<a href="https://commons.wikimedia.org/w/index.php?curid=1698345">Wikimedia</a>
+							</small>
+						</div>
+						<img class="fragment current-visible" src="imgs/beautiful-mind.gif" style="position: absolute; top: 0; left: 0" />
+					</div>
+					<aside class="notes">
+						The key is the important thing...<br />
+						A third party can see the encrypted text, and without the key can't know what the information is.
+						<br />
+						* Anything from a simple leather belt, which requires a rod of a specific diameter to read...
+						<br />
+						* To advanced one way mathematical algorithms...
+					</aside>
+				</section>
+					<aside class="notes">
+						The key is the important thing...<br />
+						A third party can see the encrypted text, and without the key can't know what the information is.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Steganography</h2>
+					<p>Concealed information, hidden within unrelated information</p>
+					<img class="fragment" src="imgs/hidden-information.gif" />
+					<aside class="notes">
+						Hidden information that does not attract attention to itself,<br />
+						but once found can be trivially understood.
+					</aside>
+				</section>
+
+				<section>
+					<h4>
+						Steganography<br />
+						+<br />
+						Cryptography
+					</h4>
+					<p>Hidden, secured information</p>
+					<img class="fragment" src="imgs/ultimate-power.gif" />
+					<aside class="notes">
+						Combining these two techniques can let you hide information that's only
+						readable by the a keyholder, and that doesn't attract attention to itself.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Where have we seen this?</h2>
+				</section>
+
+				<section>
+						<h3>Writing notes with lemon juice or disappearing ink</h3>
+						<img src="imgs/invisible-ink.jpg" height="480" />
+				</section>
+
+				<section>
+						<h3>Red glasses hidden messages</h3>
+						<img src="imgs/red-message.bmp" />
+				</section>
+
+				<section>
+						<h3>Hidden Rick Rolls in academic work</h3>
+						<div style="display: inline-block; text-align: right;">
+							<img src="imgs/rick-roll.jpg" height="480" style="display: block;" />
+							<small>
+								Credit:
+								<a href="https://twitter.com/sairamg3/status/422906182152757248">Sairam Gudiseva</a>
+							</small>
+						</div>
+				</section>
+
+				<section>
+						<h3>What does that have to do with us?</h3>
+						<img src="imgs/what-about-it.gif" />
+				</section>
+
+				<section>
+					<h2>Least Significant Bits</h2>
+					<p>Human perception is coarse,<br />
+					let's take advantage!</p>
+					<p class="fragment">BUT...</p>
+					<p class="fragment">there's a limited capacity.</p>
+					<aside class="notes">
+						We can take advantage of the fact that people don't notice
+						subtle changes to images, and hide information in the
+						"least significant" portions.
+					</aside>
+				</section>
+
+				<section>
+					<h2>f5stegojs</h2>
+					<p>
+						<a href="https://www.npmjs.com/package/f5stegojs">https://www.npmjs.com/package/f5stegojs</a>
+					</p>
+					<p>JPEG steganography for browser and node</p>
+				</section>
+
+				<section>
+					<h2>Code Sample</h2>
+					<pre  class="stretch highlight js">
+import fs from 'fs';
+import f5 from 'f5stegojs';
+
+<span class="fragment">// Initialize F5 Stego
+const shuffleKey = [0x8, 0x6, 0x7, 0x5, 0x3, 0x0, 0x9, 0xe, 0x9];
+const stegger = new f5(shuffleKey);
+</span>
+<span class="fragment">// Load working buffers
+const outer = fs.readFileSync('outer.jpg');
+const inner = Buffer.from('Meme text', 'utf8');
+</span>
+<span class="fragment">// Perform steganographic embed
+const embedded = stegger.embed(outer, inner);
+</span>
+<span class="fragment">// Write output
+fs.writeFileSync('embedded.jpg');</span>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Source Image</h2>
+					<img src="imgs/buyboat.jpg" />
+				</section>
+
+				<section>
+					<h2>Embed text</h2>
+					"I should buy a boat"
+				</section>
+
+				<section>
+					<h2>Resultant Image</h2>
+					<img src="imgs/embedded.jpg" />
+				</section>
+
+				<section>
+					<h2>Comparison</h2>
+					<img src="imgs/buyboat.jpg" width="48%" />
+					<img src="imgs/embedded.jpg" width="48%" />
+					<aside class="notes">
+						As you can see, there's no noticeable difference between the two.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Now What?</h2>
+					<p>Go play!</p>
+					<aside class="notes">
+						I would encourage everyone to go play with the tools.
+						Send messages to your friends and make them work to
+						crack the code. Hide easter eggs all over.
+					</aside>
+				</section>
+
+				<section>
+					<h2>With This Great Power...</h2>
+					<p class="fragment">Comes No Responsibility</p>
+					<aside class="notes">
+						Sure, you could find useful things to do with these tools.
+						Watermarking images, embedding product data, etc.
+						<a href="http://imgur.com/gallery/yNlQWRM">But why?</a>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Thank You</h2>
+					<p>&nbsp;</p>
+					<p>Chris Karper</p>
+					<p><small>
+						Github: <a href="https://github.com/ckarper">@ckarper</a><br />
+						Twitter: <a href="http://twitter.com/wickity">@wickity</a>
+					</small></p>
+					<p><small>
+						<a href="https://github.com/ckarper/talk-steganography">https://github.com/ckarper/talk-steganography</a>
+					</small></p>
+				</section>
+
 			</div>
 		</div>
 
@@ -41,7 +283,11 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+					    [].forEach.call( document.querySelectorAll( '.highlight' ), function( v, i) {
+					        hljs.highlightBlock(v);
+					    });
+					} }
 				]
 			});
 		</script>
