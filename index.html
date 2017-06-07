@@ -37,21 +37,27 @@
 				</section>
 
 				<section>
-					<h2>Who Am I?</h2>
-					<p class="fragment">Chris Karper</p>
-					<p class="fragment"><small>Platform Architect @ Under Armour</small></p>
-					<p class="fragment"><small>
-						Github: <a href="https://github.com/ckarper">@ckarper</a><br />
-						Twitter: <a href="http://twitter.com/wickity">@wickity</a>
-					</small></p>
-				</section>
-
-				<section>
 					<h2>What Is This Talk</h2>
 					<p>A mostly silly guide to hiding information</p>
 					<aside class="notes">
 						This is a talk about secret codes, and recapturing the fun we had as
 						kids passing notes, writing coded messages, or using invisible ink.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Who Am I?</h2>
+					<p>Chris Karper</p>
+					<p class="fragment">
+						<small>Platform Architect @ Under Armour</small><br />
+						<img class="plain" src="imgs/ua_logo.png" width="100" />
+					</p>
+					<p class="fragment"><small>
+						Github: <a href="https://github.com/ckarper">@ckarper</a><br />
+						Twitter: <a href="http://twitter.com/wickity">@wickity</a>
+					</small></p>
+					<aside class="notes">
+						Developer for over 20 years.<br />
 					</aside>
 				</section>
 
@@ -117,7 +123,7 @@
 				<section>
 					<h2>Steganography</h2>
 					<p>Concealed information, hidden within unrelated information</p>
-					<img class="fragment" src="imgs/hidden-information.gif" />
+					<img src="imgs/hidden-information.gif" />
 					<aside class="notes">
 						Hidden information that does not attract attention to itself,<br />
 						but once found can be trivially understood.
@@ -131,7 +137,7 @@
 						Cryptography
 					</h4>
 					<p>Hidden, secured information</p>
-					<img class="fragment" src="imgs/ultimate-power.gif" />
+					<img src="imgs/ultimate-power.gif" />
 					<aside class="notes">
 						Combining these two techniques can let you hide information that's only
 						readable by the a keyholder, and that doesn't attract attention to itself.
@@ -169,6 +175,11 @@
 				</section>
 
 				<section>
+					<h3>Hide Data In Images</h3>
+					<p>Place small amounts of data inside image and video files</p>
+				</section>
+
+				<section>
 					<h2>Least Significant Bits</h2>
 					<p>Human perception is coarse,<br />
 					let's take advantage!</p>
@@ -190,6 +201,16 @@
 				</section>
 
 				<section>
+					<h2>Source Image</h2>
+					<img src="imgs/buyboat.jpg" />
+				</section>
+
+				<section>
+					<h2>Embed text</h2>
+					"I should buy a boat"
+				</section>
+
+				<section data-timing="120">
 					<h2>Code Sample</h2>
 					<pre  class="stretch highlight js">
 import fs from 'fs';
@@ -200,8 +221,8 @@ const shuffleKey = [0x8, 0x6, 0x7, 0x5, 0x3, 0x0, 0x9, 0xe, 0x9];
 const stegger = new f5(shuffleKey);
 </span>
 <span class="fragment">// Load working buffers
-const outer = fs.readFileSync('outer.jpg');
-const inner = Buffer.from('Meme text', 'utf8');
+const outer = fs.readFileSync('relaxed-cat.jpg');
+const inner = Buffer.from('I should buy a boat', 'utf8');
 </span>
 <span class="fragment">// Perform steganographic embed
 const embedded = stegger.embed(outer, inner);
@@ -209,16 +230,6 @@ const embedded = stegger.embed(outer, inner);
 <span class="fragment">// Write output
 fs.writeFileSync('embedded.jpg');</span>
 					</pre>
-				</section>
-
-				<section>
-					<h2>Source Image</h2>
-					<img src="imgs/buyboat.jpg" />
-				</section>
-
-				<section>
-					<h2>Embed text</h2>
-					"I should buy a boat"
 				</section>
 
 				<section>
@@ -279,6 +290,7 @@ fs.writeFileSync('embedded.jpg');</span>
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				defaultTiming: 30,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
